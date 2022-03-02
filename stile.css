@@ -45,10 +45,25 @@ main {
 }
 
 .square {
-    width: 50px;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
+    cursor: pointer;
 }
+
+.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+

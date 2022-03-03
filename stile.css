@@ -79,6 +79,7 @@ main {
 }
 
 .bomb {
-    background-color: red;
+    background-color: #dc143cff;
+    color: white;
 }
 

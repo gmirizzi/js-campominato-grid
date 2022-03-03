@@ -1,50 +1,52 @@
 document.querySelector('header button').addEventListener('click', function () {
-    document.getElementById("container").innerHTML='';
-    
+    document.getElementById("container").innerHTML = '';
+
     switch (document.querySelector("select").value) {
         case "1":
-            bombe=bombGenerator(100);
+            bombe = bombGenerator(100);
             for (let i = 1; i <= 100; i++) {
                 const element = document.createElement('div');
-                element.addEventListener('click', function() {
-                    for (let index = 0; index < bombe.length; index++) {
-                        if (this.innerHTML==bombe[index]){
-                            this.classList.add('bomb')
-                        } else {
-                            this.classList.add('active');
-                        }
+                element.addEventListener('click', function () {
+                    
+                    this.classList.add('active')
+                    if (bombe.includes(parseInt(this.innerHTML))) {
+                        this.classList.remove('active')
+                        this.classList.add('bomb')
+                        alert('YOU LOSE!')
+                    }else if (document.querySelectorAll('.active').length==84){
+                        alert('YOU WIN!')
                     }
                 })
                 element.classList.add('square', 'easy');
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
-        break;
+            break;
         case "2":
-            bombe=bombGenerator(81);
+            bombe = bombGenerator(81);
             for (let i = 1; i <= 81; i++) {
                 const element = document.createElement('div');
-                element.addEventListener('click', function() {
-                    for (let index = 0; index < bombe.length; index++) {
-                        if (this.innerHTML==bombe[index]){
-                            this.classList.add('bomb')
-                        } else {
-                            this.classList.add('active');
-                        }
+                element.addEventListener('click', function () {
+
+                    if (bombe.includes(parseInt(this.innerHTML))) {
+                        this.classList.add('bomb')
+                    } else {
+                        this.classList.add('active')
                     }
+
                 })
                 element.classList.add('square', 'medium');
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
-        break;
+            break;
         case "3":
-            bombe=bombGenerator(49);
+            bombe = bombGenerator(49);
             for (let i = 1; i <= 49; i++) {
                 const element = document.createElement('div');
-                element.addEventListener('click', function() {
+                element.addEventListener('click', function () {
                     for (let index = 0; index < bombe.length; index++) {
-                        if (this.innerHTML==bombe[index]){
+                        if (this.innerHTML == bombe[index]) {
                             this.classList.add('bomb')
                         } else {
                             this.classList.add('active');
@@ -55,17 +57,17 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
-        break;    
+            break;
     }
 })
 
-function bombGenerator(max){
+function bombGenerator(max) {
     const array = [];
-    let i= 0;
-    while (i<16) {
-        num = parseInt(Math.random() * max + 1); 
+    let i = 0;
+    while (i < 16) {
+        num = parseInt(Math.random() * max + 1);
         if (!array.includes(num)) {
-            array.push(num);            
+            array.push(num);
             i++;
         };
     }

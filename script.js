@@ -1,29 +1,29 @@
 document.querySelector('header button').addEventListener('click', function () {
     document.getElementById("container").innerHTML = '';
     document.getElementById("risultato").innerHTML = '';
+    let end = false;
     switch (document.querySelector("select").value) {
         case "1":
             bombe = bombGenerator(100);
-            let end=false;
             for (let i = 1; i <= 100; i++) {
                 const element = document.createElement('div');
                 element.classList.add('square', 'easy');
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
-                
+
                 element.addEventListener('click', function () {
-                    if (end==false){
+                    if (end == false) {
                         if (bombe.includes(parseInt(this.innerHTML))) {
                             this.classList.add('bomb');
-                            document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
-                            return end=true;
+                            document.getElementById('risultato').innerHTML = "YOU LOSE :( Punteggio: " + document.querySelectorAll(".active").length;
+                            return end = true;
                         } else {
                             this.classList.add('active')
                         }
-    
+
                         if (document.querySelectorAll(".active").length == 84) {
-                            document.getElementById('risultato').innerHTML="YOU WIN!";
-                            return end=true;
+                            document.getElementById('risultato').innerHTML = "YOU WIN!";
+                            return end = true;
                         }
                     }
                 })
@@ -34,18 +34,22 @@ document.querySelector('header button').addEventListener('click', function () {
             for (let i = 1; i <= 81; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function () {
+                    if (end == false) {
+                        if (bombe.includes(parseInt(this.innerHTML))) {
+                            this.classList.add('bomb');
+                            document.getElementById('risultato').innerHTML = "YOU LOSE :( Punteggio: " + document.querySelectorAll(".active").length;
+                            return end = true;
 
-                    if (bombe.includes(parseInt(this.innerHTML))) {
-                        this.classList.add('bomb');
-                        document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
-                    } else {
-                        this.classList.add('active')
+                        } else {
+                            this.classList.add('active')
+                        }
+
+                        if (document.querySelectorAll(".active").length == 65) {
+                            document.getElementById('risultato').innerHTML = "YOU WIN!";
+                            return end = true;
+
+                        }
                     }
-
-                    if (document.querySelectorAll(".active").length == 65) {
-                        document.getElementById('risultato').innerHTML="YOU WIN!";
-                    }
-
                 })
                 element.classList.add('square', 'medium');
                 element.innerHTML = i;
@@ -57,15 +61,18 @@ document.querySelector('header button').addEventListener('click', function () {
             for (let i = 1; i <= 49; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function () {
-                    if (bombe.includes(parseInt(this.innerHTML))) {
-                        this.classList.add('bomb');
-                        document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
-                    } else {
-                        this.classList.add('active')
-                    }
-
-                    if (document.querySelectorAll(".active").length == 33) {
-                        document.getElementById('risultato').innerHTML="YOU WIN!";
+                    if (end == false) {
+                        if (bombe.includes(parseInt(this.innerHTML))) {
+                            this.classList.add('bomb');
+                            document.getElementById('risultato').innerHTML = "YOU LOSE :( Punteggio: " + document.querySelectorAll(".active").length;
+                            return end = true;
+                        } else {
+                            this.classList.add('active')
+                        }
+                        if (document.querySelectorAll(".active").length == 33) {
+                            document.getElementById('risultato').innerHTML = "YOU WIN!";
+                            return end = true;
+                        }
                     }
                 })
                 element.classList.add('square', 'hard');

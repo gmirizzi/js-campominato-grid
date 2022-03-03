@@ -1,28 +1,26 @@
 document.querySelector('header button').addEventListener('click', function () {
     document.getElementById("container").innerHTML = '';
-
+    document.getElementById("risultato").innerHTML = '';
     switch (document.querySelector("select").value) {
         case "1":
             bombe = bombGenerator(100);
             for (let i = 1; i <= 100; i++) {
                 const element = document.createElement('div');
+                element.classList.add('square', 'easy');
+                element.innerHTML = i;
+                document.getElementById("container").append(element);
                 element.addEventListener('click', function () {
                     if (bombe.includes(parseInt(this.innerHTML))) {
                         this.classList.add('bomb');
-                        alert('YOU LOSE!');
-                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
+                        document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
                     } else {
                         this.classList.add('active')
                     }
 
                     if (document.querySelectorAll(".active").length == 84) {
-                        alert("YOU WIN!");
+                        document.getElementById('risultato').innerHTML="YOU WIN!";
                     }
-
                 })
-                element.classList.add('square', 'easy');
-                element.innerHTML = i;
-                document.getElementById("container").append(element);
             }
             break;
         case "2":
@@ -33,14 +31,13 @@ document.querySelector('header button').addEventListener('click', function () {
 
                     if (bombe.includes(parseInt(this.innerHTML))) {
                         this.classList.add('bomb');
-                        alert('YOU LOSE!');
-                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
+                        document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
                     } else {
                         this.classList.add('active')
                     }
 
                     if (document.querySelectorAll(".active").length == 65) {
-                        alert("YOU WIN!");
+                        document.getElementById('risultato').innerHTML="YOU WIN!";
                     }
 
                 })
@@ -56,14 +53,13 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.addEventListener('click', function () {
                     if (bombe.includes(parseInt(this.innerHTML))) {
                         this.classList.add('bomb');
-                        alert('YOU LOSE!');
-                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
+                        document.getElementById('risultato').innerHTML="YOU LOSE :( Punteggio: " +document.querySelectorAll(".active").length;
                     } else {
                         this.classList.add('active')
                     }
 
                     if (document.querySelectorAll(".active").length == 33) {
-                        alert("YOU WIN!");
+                        document.getElementById('risultato').innerHTML="YOU WIN!";
                     }
                 })
                 element.classList.add('square', 'hard');

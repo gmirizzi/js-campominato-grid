@@ -2,7 +2,7 @@ document.querySelector('header button').addEventListener('click', function () {
     document.getElementById("container").innerHTML='';
     
     switch (document.querySelector("select").value) {
-        case "3":
+        case "1":
             for (let i = 1; i <= 100; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function() {
@@ -24,7 +24,7 @@ document.querySelector('header button').addEventListener('click', function () {
                 document.getElementById("container").append(element);
             }
         break;
-        case "1":
+        case "3":
             for (let i = 1; i <= 49; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function() {

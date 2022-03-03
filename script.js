@@ -7,15 +7,18 @@ document.querySelector('header button').addEventListener('click', function () {
             for (let i = 1; i <= 100; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function () {
-                    
-                    this.classList.add('active')
                     if (bombe.includes(parseInt(this.innerHTML))) {
-                        this.classList.remove('active')
-                        this.classList.add('bomb')
-                        alert('YOU LOSE!')
-                    }else if (document.querySelectorAll('.active').length==84){
-                        alert('YOU WIN!')
+                        this.classList.add('bomb');
+                        alert('YOU LOSE!');
+                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
+                    } else {
+                        this.classList.add('active')
                     }
+
+                    if (document.querySelectorAll(".active").length == 84) {
+                        alert("YOU WIN!");
+                    }
+
                 })
                 element.classList.add('square', 'easy');
                 element.innerHTML = i;
@@ -29,9 +32,15 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.addEventListener('click', function () {
 
                     if (bombe.includes(parseInt(this.innerHTML))) {
-                        this.classList.add('bomb')
+                        this.classList.add('bomb');
+                        alert('YOU LOSE!');
+                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
                     } else {
                         this.classList.add('active')
+                    }
+
+                    if (document.querySelectorAll(".active").length == 65) {
+                        alert("YOU WIN!");
                     }
 
                 })
@@ -45,12 +54,16 @@ document.querySelector('header button').addEventListener('click', function () {
             for (let i = 1; i <= 49; i++) {
                 const element = document.createElement('div');
                 element.addEventListener('click', function () {
-                    for (let index = 0; index < bombe.length; index++) {
-                        if (this.innerHTML == bombe[index]) {
-                            this.classList.add('bomb')
-                        } else {
-                            this.classList.add('active');
-                        }
+                    if (bombe.includes(parseInt(this.innerHTML))) {
+                        this.classList.add('bomb');
+                        alert('YOU LOSE!');
+                        document.getElementById("container").innerHTML = "Punteggio: " + document.querySelectorAll(".active").length;
+                    } else {
+                        this.classList.add('active')
+                    }
+
+                    if (document.querySelectorAll(".active").length == 33) {
+                        alert("YOU WIN!");
                     }
                 })
                 element.classList.add('square', 'hard');

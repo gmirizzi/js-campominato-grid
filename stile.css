@@ -67,3 +67,8 @@ main {
     height: calc(100% / 7);
 }
 
+.active {
+    background-color: #6495edff;
+    color: white;
+}
+

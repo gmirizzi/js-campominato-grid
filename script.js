@@ -12,6 +12,7 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
+            bombGenerator(100);
         break;
         case "2":
             for (let i = 1; i <= 81; i++) {
@@ -23,6 +24,7 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
+            bombGenerator(81);
         break;
         case "3":
             for (let i = 1; i <= 49; i++) {
@@ -34,6 +36,21 @@ document.querySelector('header button').addEventListener('click', function () {
                 element.innerHTML = i;
                 document.getElementById("container").append(element);
             }
+            bombGenerator(49);
         break;    
     }
 })
+
+function bombGenerator(max){
+    const bombe = [];
+    let i= 0;
+    while (i<16) {
+        num = parseInt(Math.random() * max + 1); 
+        if (!bombe.includes(num)) {
+            bombe.push(num);            
+            i++;
+        };
+    }
+    console.log(bombe)
+}
+
